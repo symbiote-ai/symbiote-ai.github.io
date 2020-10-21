@@ -45,7 +45,7 @@ function displayRawAudio() {
 function submission() {
   email = document['getElementById']('inputEmail')['value'];
   var _0x3d63x2 = new XMLHttpRequest();
-  _0x3d63x2['open']('POST', 'https://hooks.slack.com/services/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', true);
+  _0x3d63x2['open']('POST', 'https://hooks.slack.com/services/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', true);
   _0x3d63x2['send'](JSON['stringify']({
       '\x74\x65\x78\x74': 'New email submission at symbiote-ai.com: ' + email
   }));
