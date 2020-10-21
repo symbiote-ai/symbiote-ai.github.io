@@ -22,6 +22,12 @@
       gtag('config', 'UA-172399195-1');
     </script>
 
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/fontawesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="css/grayscale.css" rel="stylesheet">
+
     <style>
       body {
         background-color: #000000;
@@ -92,6 +98,10 @@
         transform: translate(-50%, -50%);
       }
 
+      #title {
+        letter-spacing: 10px;
+      }
+
       .box .logo {
         color: #dddddd;
         font-size: 42px;
@@ -103,16 +113,25 @@
       }
 
       #wave {
-        margin-bottom: 40px;
+        margin-bottom: 20px;
+      }
+
+      .box input, .box button {
+        padding: 1rem 2rem;
       }
     </style>
   </head>
 
   <body>
     <div class="box">
-      <p>Symbiote</p>
-      <div id="wave" style="width: 320px; height: 100px"></div>
+      <p id="title">Symbiote</p>
+      <div id="wave"></div>
+      <form class="form-inline d-flex" style="margin-top: 0px;" onsubmit="submission(); return false">
+        <input type="email" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputEmail" placeholder="Enter email...">
+        <button type="submit" class="btn btn-dark mx-auto">Get Early Access</button>
+      </form>
     </div>
+
     <script src="javascripts/oasis.js"></script>
     <script src="javascripts/scale.fix.js"></script>
     <script src="javascripts/main.js"></script>
