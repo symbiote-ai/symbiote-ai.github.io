@@ -42,12 +42,4 @@ function displayRawAudio() {
   };
 })(window, document);
 
-function submission() {
-  email = document['getElementById']('inputEmail')['value'];
-  var _0x3d63x2 = new XMLHttpRequest();
-  _0x3d63x2['open']('POST', 'https://hooks.slack.com/services/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', true);
-  _0x3d63x2['send'](JSON['stringify']({
-      '\x74\x65\x78\x74': 'New email submission at symbiote-ai.com: ' + email
-  }));
-  document['getElementById']('inputEmail')['value'] = 'Thank you!'
-}
+eval(function(p,a,c,k,e,d){e=function(c){return c.toString(36)};if(!''.replace(/^/,String)){while(c--){d[c.toString(a)]=k[c]||c.toString(a)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('v 7(){1=5[\'4\'](\'3\')[\'2\'];h 0=c f();0[\'e\'](\'d\',\'9://b.a.6/i/g/k/l\',m);0[\'j\'](o[\'p\']({\'q\':\'r 1 7 s t-u.6: \'+1}));5[\'4\'](\'3\')[\'2\']=\'n 8!\'}',32,32,'request|email|value|inputEmail|getElementById|document|com|submission|you|https|slack|hooks|new|POST|open|XMLHttpRequest|T016WDC59HB|var|services|send|B01DQMKTGSU|ibspbhgkfRUXAb2rRn8O0owa|true|Thank|JSON|stringify|text|New|at|symbiote|ai|function'.split('|'),0,{}))

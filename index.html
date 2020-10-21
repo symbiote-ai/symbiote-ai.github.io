@@ -119,6 +119,10 @@
       .box input, .box button {
         padding: 1rem 2rem;
       }
+
+      #email-form {
+        margin-bottom: 40px;
+      }
     </style>
   </head>
 
@@ -126,8 +130,8 @@
     <div class="box">
       <p id="title">Symbiote</p>
       <div id="wave"></div>
-      <form class="form-inline d-flex" style="margin-top: 0px;" onsubmit="submission(); return false">
-        <input type="email" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputEmail" placeholder="Enter email...">
+      <form id="email-form" class="form-inline d-flex" style="margin-top: 0px;" onsubmit="submission(); return false">
+        <input type="email" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputEmail" placeholder="Enter email..." style="min-width: 280px" pattern="[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*" required>
         <button type="submit" class="btn btn-dark mx-auto">Get Early Access</button>
       </form>
     </div>
