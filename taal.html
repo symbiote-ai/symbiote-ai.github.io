@@ -1,0 +1,207 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="We are developing a 3D creation tool with AI.">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Symbiote</title>
+    <link rel="icon"
+          type="image/png"
+          href="/assets/favicon.ico" />
+    <meta name="viewport" content="width=device-width">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/fontawesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="css/grayscale.css" rel="stylesheet">
+
+    <style>
+      * { box-sizing: border-box; overflow: hidden; }
+      .video-background {
+        background: #000;
+        position: fixed;
+        top: 0; right: 0; bottom: 0; left: 0;
+        z-index: -99;
+      }
+      .video-foreground,
+      .video-background iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+      }
+      #vidtop-content {
+        top: 0;
+        color: #fff;
+      }
+      .vid-info { position: absolute; top: 0; right: 0; width: 33%; background: rgba(0,0,0,0.3); color: #fff; padding: 1rem; font-family: Avenir, Helvetica, sans-serif; }
+      .vid-info h1 { font-size: 2rem; font-weight: 700; margin-top: 0; line-height: 1.2; }
+      .vid-info a { display: block; color: #fff; text-decoration: none; background: rgba(0,0,0,0.5); transition: .6s background; border-bottom: none; margin: 1rem auto; text-align: center; }
+      @media (min-aspect-ratio: 16/9) {
+        .video-foreground { height: 300%; top: -100%; }
+      }
+      @media (max-aspect-ratio: 16/9) {
+        .video-foreground { width: 300%; left: -100%; }
+      }
+      @media all and (max-width: 600px) {
+      .vid-info { width: 50%; padding: .5rem; }
+      .vid-info h1 { margin-bottom: .2rem; }
+      }
+      @media all and (max-width: 500px) {
+      .vid-info .acronym { display: none; }
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Heebo", sans-serif;
+      }
+
+      a {
+        color: #2196f3;
+        text-decoration: none;
+      }
+
+      a:hover,
+      a:focus {
+        color: #212df3;
+        text-decoration: none;
+        outline: none;
+        cursor: pointer;
+      }
+
+      input,
+      textarea {
+        outline: none;
+        box-shadow: none !important;
+      }
+
+      h1 {
+        font-size: 32px;
+        font-weight: 100;
+      }
+
+      h2 {
+        font-size: 20px;
+        font-weight: 100;
+        margin-top: 50px;
+      }
+
+      h3 {
+        font-size: 16px;
+        font-weight: 100;
+        margin-top: 30px;
+      }
+
+      .box {
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      #title {
+        letter-spacing: 10px;
+      }
+
+      .box .logo {
+        color: #dddddd;
+        font-size: 42px;
+        font-weight: bolder;
+      }
+
+      .box p {
+        font-size: 16px;
+      }
+
+      #wave {
+        margin-bottom: 20px;
+      }
+
+      .box input, .box button {
+        padding: 1rem 2rem;
+      }
+
+      #email-form {
+        margin-top: 1vw;
+        margin-bottom: 40px;
+        margin-left: 5vw;
+        margin-right: 5vw;
+      }
+
+      #title {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        font-weight: bold;
+        color: white;
+      }
+
+      #title p {
+        font-family: Inter;
+        font-size: 8vw;
+        line-height: 9.5vw;
+        margin: 0px !important;
+      }
+
+      @media (max-width : 320px) {
+        #title p {
+          font-size: 12vw;
+          line-height: 13.5vw;
+        }
+      }
+
+      #title {
+        height: 100vh;
+        background: radial-gradient( 107.1% 297.5% at 110.53% -10.92%, rgb(20, 20, 20, 0.2) 0%, rgb(0, 0, 0, 0.5) 100%);
+      }
+
+      video {
+        object-fit: cover;
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+      }
+
+      .btn-dark {
+        background: radial-gradient( 107.1% 297.5% at 110.53% -10.92%, rgb(203, 46, 140) 0%, rgb(44, 97, 249) 100%);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="video-background">
+      <div class="video-foreground">
+        <video autoplay muted loop id="myVideo">
+          <source src="assets/taal.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
+    <div id="title">
+      <p id="infinite">WEBCAM</p>
+      <p id="infinite">FULL BODY</p>
+      <p id="fashion">VTUBER</p>
+
+      <form id="email-form" class="form-inline d-flex" onsubmit="submission(); return false">
+        <input type="email" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputEmail" placeholder="Enter email..." style="min-width: 280px; margin-right: 1rem !important" pattern="[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*" required>
+        <button type="submit" class="btn btn-dark mx-auto">Get Early Access</button>
+      </form>
+    </div>
+    <iframe src="https://www.youtube.com/embed/EQNOLqqS6ps?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&playlist=EQNOLqqS6ps&mute=1" frameborder="0" allowfullscreen width="0"></iframe>
+
+    <script src="javascripts/taal.js"></script>
+  </body>
+</html>
